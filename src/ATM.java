@@ -36,6 +36,9 @@ class Account
 	  
 	  void getLogin()
 	  {   
+		  do {
+			  
+		  try {
 		  data.put(123, 1124);
 		  data.put(124, 1125);
 		  data.put(125, 1126);
@@ -59,7 +62,18 @@ class Account
 		else 
 		{
 			System.err.println("Wrong Credentials ❌");
-		}	       
+		}	
+		    }catch(Exception e) 
+		     {
+			  System.err.println("\nEnter only numbers");
+			  System.out.println("Characters & symbols are not allowed\n");
+			  scanner.next();
+		     }
+		      finally 
+		      {
+		    	 System.out.println("process executed");
+		      }
+		  }while(true);
 	  }
 	  void getAccountType()
 	  {
@@ -75,7 +89,8 @@ class Account
 		  break ;
 		  case 2 : System.out.println("Savings Account");
 		  break ;
-		  case 3 : System.out.println("Exit");
+		  case 3 : System.out.println("Thank you ! for VISITING 💐");
+		  System.out.println("VISIT AGAIN...🙏🏻\n");
 		  break ;
 		  default :
 			  System.err.println("\nInvalid choice !!");
@@ -85,13 +100,14 @@ class Account
 		  }
 	  }
  }
-
+ 
 public class ATM {
 
 	public static void main(String[] args) 
 	{
 		OptionMenu obj1 = new OptionMenu();
-		obj1.getLogin();
+		//obj1.getLogin();
+		obj1.getAccountType();
 		
 	}
 
