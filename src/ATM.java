@@ -54,13 +54,35 @@ class Account
 		
 		if(data.containsKey(Cnum) && data.get(Cnum) == CPIN)
 		{
-			System.out.println("Login Succsesfully ✅");
+			getAccountType();
 		}
 		else 
 		{
-			System.out.println("Wrong Credentials ❌");
-		}
-	       
+			System.err.println("Wrong Credentials ❌");
+		}	       
+	  }
+	  void getAccountType()
+	  {
+		  System.out.println("\n Enter Account type");
+		  System.out.println("\nChoice 1 : Current Account");
+		  System.out.println("Choice 2 : Savings Account");
+		  System.out.println("Choice 3 : Exit");
+		  System.out.print("\nChoice : ");
+		  int ch = scanner.nextInt();
+		  
+		  switch(ch) {
+		  case 1 : System.out.println("Current Account");
+		  break ;
+		  case 2 : System.out.println("Savings Account");
+		  break ;
+		  case 3 : System.out.println("Exit");
+		  break ;
+		  default :
+			  System.err.println("\nInvalid choice !!");
+			  System.out.println("Enter valid choice");
+			  getAccountType();
+		  break ;
+		  }
 	  }
  }
 
