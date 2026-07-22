@@ -1,10 +1,19 @@
 import java.util.*;
+import java.text.*;
 
 class Account
 {   
-	
+	Scanner scanner = new Scanner(System.in);
+	DecimalFormat df1 = new DecimalFormat("###,##0.00' Rupee'");
+	DecimalFormat df2 = new DecimalFormat("###,##0.00' Doller'");
+
+	// Global Variables
 	private int CN ;
 	private int pn;
+	
+	double cb = 2000 ;
+	double sb = 1000;
+	
 	void setCustomerNumber(int cn) 
 	{
 		
@@ -26,6 +35,64 @@ class Account
     {
 		return pn;
 	}
+    
+    void getCurrentBalance() {
+    	System.out.print("\nCurrent Account Balance : "+ df1.format(cb));
+    	
+    }
+    
+    void getCurrentWithdrawInput() 
+    {
+    	System.out.println("Current Account Balance : "+ df1.format(cb));
+    	System.out.println("Enter Withdraw Amount : ");
+    	double amount = scanner.nextDouble();
+    	if(cb >= amount) 
+    	{
+    	System.out.println("Transaction Successful..✅");	
+    	calcCurrentWithdraw(amount);
+    	System.out.println("\nNew Current Account Balance : "+ df1.format(cb)+"\n");
+    	}
+    	else 
+    	{
+    		System.err.println("Insufficient balance");
+        	System.out.println("\nCurrent Account Balance : "+ df1.format(cb)+" Only.\n");
+
+    	}
+    }
+	 double calcCurrentWithdraw(double amount){
+		 cb -= amount; 
+		 return cb;
+	}
+	 
+	 void getSavingsBalance() 
+	   {
+	    	System.out.print("\nSavings Account Balance : "+ df1.format(sb));
+	    	
+	    }
+	 
+	 void getSavingsWithdrawInput() 
+	    {
+	    	System.out.println("Savings Account Balance : "+ df1.format(sb));
+	    	System.out.println("Enter Withdraw Amount : ");
+	    	double amount = scanner.nextDouble();
+	    	if(sb >= amount) 
+	    	{
+	    	System.out.println("Transaction Successful..✅");	
+	    	calcSavingsWithdraw(amount);
+	    	System.out.println("\nNew Current Account Balance : "+ df1.format(sb)+"\n");
+	    	}
+	    	else 
+	    	{
+	    		System.err.println("Insufficient balance");
+	        	System.out.println("\nCurrent Account Balance : "+ df1.format(sb)+" Only.\n");
+
+	    	}
+	    }
+		 double calcSavingsWithdraw(double amount){
+			 sb -= amount; 
+			 return sb;
+		
+}
 }
 
 	
@@ -68,6 +135,7 @@ class Account
 			  System.err.println("\nEnter only numbers");
 			  System.out.println("Characters & symbols are not allowed\n");
 			  scanner.next();
+			  getLogin();
 		     }
 		      finally 
 		      {
@@ -85,9 +153,9 @@ class Account
 		  int ch = scanner.nextInt();
 		  
 		  switch(ch) {
-		  case 1 : System.out.println("Current Account");
+		  case 1 : getCurrent();
 		  break ;
-		  case 2 : System.out.println("Savings Account");
+		  case 2 : getSavings();
 		  break ;
 		  case 3 : System.out.println("Thank you ! for VISITING 💐");
 		  System.out.println("VISIT AGAIN...🙏🏻\n");
@@ -99,15 +167,79 @@ class Account
 		  break ;
 		  }
 	  }
+	  void getCurrent() 
+	  {
+		  System.out.println("\n CURRENT ACCOUNT 👤");
+		  System.out.println("Choice 1 : Balance Inquiry 📃");
+		  System.out.println("Choice 2 : Withdraw money 💵");
+		  System.out.println("Choice 3 : Deposit money💰");
+		  System.out.print("Choice 4 : Exit");
+		  System.out.println("\nChoice :");
+		  
+		  int ch = scanner.nextInt();
+		  
+		  switch(ch)
+		  {
+		  case 1 : getCurrentBalance();
+		  getAccountType();
+			  break;
+		  case 2 :getCurrentWithdrawInput();
+		  getAccountType();
+			  break;
+		  case 3 :
+			  break;
+		  case 4 : System.out.println("Thank you ! for VISITING 💐");
+		  System.out.println("VISIT AGAIN...🙏🏻\n");
+			  break;
+			  
+			  default :  System.err.println("\nInvalid choice !!");
+			  System.out.println("Enter valid choice");
+			  getCurrent();
+				  break;
+		  }
+	  }
+	  
+	  void getSavings() 
+	  {
+		  System.out.println("\n SAVINGS ACCOUNT 👤");
+		  System.out.println("Choice 1 : Balance Inquiry 📃");
+		  System.out.println("Choice 2 : Withdraw money 💵");
+		  System.out.println("Choice 3 : Deposit money 💰");
+		  System.out.print("Choice 4 : Exit");
+		  System.out.println("\nChoice :");
+		  
+		  int ch = scanner.nextInt();
+		  
+		  switch(ch)
+		  {
+		  case 1 :getSavingsBalance();
+		  getAccountType();
+			  break;
+		  case 2 :getSavingsWithdrawInput();
+		  getAccountType();
+			  break;
+		  case 3 :
+			  break;
+		  case 4 : System.out.println("Thank you ! for VISITING 💐");
+		  System.out.println("VISIT AGAIN...🙏🏻\n");
+			  break;
+		  
+			  default :  System.err.println("\nInvalid choice !!");
+			  System.out.println("Enter valid choice");
+			  getSavings();
+				  break;
+		  }
+		  
+	  }
  }
  
 public class ATM {
 
 	public static void main(String[] args) 
 	{
-		OptionMenu obj1 = new OptionMenu();
-		//obj1.getLogin();
-		obj1.getAccountType();
+		OptionMenu obj = new OptionMenu();
+		obj.getLogin();
+		obj.getAccountType();
 		
 	}
 
