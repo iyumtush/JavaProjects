@@ -9,7 +9,7 @@ import java.io.*;
 class ClientHandling extends Thread
 {
 	Socket socket;
-	int balance = 10000;
+	static int balance = 10000;
 	public ClientHandling(Socket socket)
 	{
 		this.socket = socket;

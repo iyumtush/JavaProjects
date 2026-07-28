@@ -11,7 +11,7 @@ public class BankClient {
 				new InputStreamReader(socket.getInputStream()));
 		PrintWriter out = 
 				new PrintWriter(socket.getOutputStream(),true);
-		out.println("3000");
+		out.println("5000");
 		String response = in.readLine();
 		System.out.println(response);
 		socket.close();
