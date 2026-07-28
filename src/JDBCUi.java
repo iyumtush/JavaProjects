@@ -1,7 +1,6 @@
-import java.awt.*;
-import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
+import javax.swing.*;
 
 public class JDBCUi extends JFrame implements ActionListener
 {

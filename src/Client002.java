@@ -1,0 +1,19 @@
+import java.net.*;
+import java.io.*;
+public class Client002 
+{
+
+	public static void main(String[] args) throws UnknownHostException, IOException 
+	{
+       Socket socket = new Socket("Localhost" , 8800);
+       BufferedReader in = new BufferedReader(new 
+    		   InputStreamReader(socket.getInputStream()));
+       PrintWriter out = new 
+    		   PrintWriter(socket.getOutputStream(),true);
+       out.println("Biryani");    
+       String response = in.readLine();
+       System.out.println(response);
+       socket.close();
+	}
+
+}
