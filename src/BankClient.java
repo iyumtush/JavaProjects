@@ -1,6 +1,6 @@
 
-import java.net.*;
 import java.io.*;
+import java.net.*;
 
 public class BankClient {
 
@@ -15,6 +15,8 @@ public class BankClient {
 		String response = in.readLine();
 		System.out.println(response);
 		socket.close();
+		
+
 		
 	}
 
