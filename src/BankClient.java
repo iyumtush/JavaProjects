@@ -15,9 +15,5 @@ public class BankClient {
 		String response = in.readLine();
 		System.out.println(response);
 		socket.close();
-		
-
-		
 	}
-
 }
