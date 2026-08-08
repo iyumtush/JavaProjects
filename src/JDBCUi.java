@@ -32,6 +32,10 @@ public class JDBCUi extends JFrame implements ActionListener
 	    b3 = new JButton("Prev");
 		b4 = new JButton("Last");
 		
+		//This is the GUI part of the code where we are creating the labels, 
+		// text fields and buttons and adding them to the frame. We are also setting 
+		// the bounds for each component and adding action listeners to the buttons.	
+		
 		l1.setBounds(100, 100, 100, 30);
 		add(l1);
 		
